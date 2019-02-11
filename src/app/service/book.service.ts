@@ -19,7 +19,7 @@ export class BookService {
   }
 
   public publishBooks() {
-    this.getBooks.subscribe(
+    this.getBooks().subscribe(
       bookList => {
         this.availableBooks = bookList;
         this.availableBooks$.next(this.availableBooks);
