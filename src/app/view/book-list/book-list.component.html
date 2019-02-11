@@ -1,7 +1,7 @@
+<table>
+<tr *ngFor="let book of availableBooks | async ">
 
+  <td>{{book.boTitle}}</td><td>{{book.boAuthor}}</td><td><img src="{{book.boCover}}" width='70px' /></td>
 
-<ul *ngFor="let book of availableBooks | async ">
-
-<li>{{book.boTitle}}</li>
-
-</ul>
+</tr>
+</table>
