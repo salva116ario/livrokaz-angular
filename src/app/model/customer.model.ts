@@ -10,6 +10,6 @@ export class Customer {
   private cuName: string;
   private cuPassword: string;
   private cuPhone: string;
-  private orderses = Orders[];
+  private orderses: Orders[];
   private commandLines: CommandLine[];
 }

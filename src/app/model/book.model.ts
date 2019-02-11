@@ -14,6 +14,6 @@ private boReleaseDate: Date;
 private boStock: number;
 private boSynopsys: string;
 private boTitle: string;
-private boTopic string;
+private boTopic: string;
 private commandLines: CommandLine[];
 }
