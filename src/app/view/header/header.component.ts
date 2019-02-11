@@ -12,4 +12,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  signIn(){
+    console.log('signIn');
+  }
+  loginIn() {
+    console.log('loginIn');
+  }
 }
