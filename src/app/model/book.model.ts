@@ -18,7 +18,6 @@ export class Book {
   private boTopic: string;
   private commandLines: CommandLine[];
 
-
   constructor(boId: number, style: Style, boAuthor: string, boCover: string, boEditor: string, boIsbn: string, boLanguage: string, boPrice: number, boReleaseDate: Date, boStock: number, boSynopsys: string, boTitle: string, boTopic: string, commandLines: CommandLine[]) {
     this.boId = boId;
     this.style = style;
