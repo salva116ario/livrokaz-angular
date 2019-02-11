@@ -1,4 +1,6 @@
 import {CommandLine} from './commandLine.model';
+import { Role } from './role.model';
+import { Orders } from './orders.model';
 
 export class Customer {
   private cuId: number;

@@ -1,3 +1,7 @@
+import { Customer } from './customer.model';
+
+import { CommandLine } from './commandLine.model';
+
 export class Orders {
   private orID: number;
   private customer: Customer;

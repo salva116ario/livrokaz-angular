@@ -1,4 +1,5 @@
 import {CommandLine} from './commandLine.model';
+import { Style } from './style.model';
 
 export class Book {
 

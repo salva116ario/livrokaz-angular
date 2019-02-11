@@ -1,5 +1,6 @@
 import {Book} from './book.model';
 import {Customer} from './customer.model';
+import { Orders } from './orders.model';
 
 export class CommandLine {
 
