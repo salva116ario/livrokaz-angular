@@ -15,34 +15,34 @@ export class Employee {
   }
 
   get _emId(): number {
-    return this._emId;
+    return this.emId;
   }
 
   set _emId(value: number) {
-    this._emId = value;
+    this.emId = value;
   }
 
   get _role(): Role {
-    return this._role;
+    return this.role;
   }
 
   set _role(value: Role) {
-    this._role = value;
+    this.role = value;
   }
 
   get _emMail(): string {
-    return this._emMail;
+    return this.emMail;
   }
 
   set _emMail(value: string) {
-    this._emMail = value;
+    this.emMail = value;
   }
 
   get _emPassword(): string {
-    return this._emPassword;
+    return this.emPassword;
   }
 
   set _emPassword(value: string) {
-    this._emPassword = value;
+    this.emPassword = value;
   }
 }
