@@ -1,0 +1,25 @@
+.header {
+  border: 1px solid black;
+}
+
+.title {
+  text-align: center;
+  font-size: 30px;
+  font-style: italic;
+  margin-left: 5%;
+  position: relative;
+}
+
+.authentication {
+  float: left;
+  position: absolute;
+  font-size: 20px;
+  top: 52%;
+  right: 1%;
+}
+.loginIn {
+    cursor: pointer;
+}
+.signIn{
+    cursor: pointer;
+}
