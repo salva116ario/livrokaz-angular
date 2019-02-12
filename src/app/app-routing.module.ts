@@ -15,6 +15,12 @@ const routes: Routes = [
   { path: 'login-admin', component: LoginAdminComponent},
   { path: "notfound", component: NotFoundComponent },
   { path: "**", redirectTo: "/notfound" }
+import {BookDetailComponent} from './view/book-detail/book-detail.component';
+
+const routes: Routes = [
+  {path: 'book-list', component: BookListComponent},
+  {path: 'book-detail/:id', component: BookDetailComponent }
+
 ];
 
 @NgModule({
