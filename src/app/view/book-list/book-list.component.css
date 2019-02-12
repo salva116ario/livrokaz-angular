@@ -1,0 +1,10 @@
+td {
+  font-size: 1.2em;
+}
+td.cover {
+  width: 110px;
+  text-align: center;
+}
+img {
+  max-width: 100px;
+}

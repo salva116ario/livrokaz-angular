@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { BookService} from '../../service/book.service';
-import {Book} from '../../model/book.model';
-import {BehaviorSubject} from 'rxjs';
+import {MatPaginator, MatSort} from '@angular/material';
+import {BookListDataSource} from './book-list-datasource';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-book-list',
@@ -10,18 +11,19 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class BookListComponent implements OnInit {
 
-  availableBooks: BehaviorSubject<Book[]>;
-  dataSource;
-  displayedColumns = ['id', 'title', 'author', 'editor', 'style', 'cover', 'isbn', 'action'];
 
-  constructor(private bookService: BookService) { }
+
+  dataSource: BookListDataSource;
+  displayedColumns = ['id', 'cover', 'title', 'author', 'editor', 'style', 'isbn', 'action'];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  constructor(private bookService: BookService,
+              private router: Router) { }
 
   ngOnInit() {
-    this.availableBooks = this.bookService.availableBooks$;
-    this.dataSource = this.availableBooks;
+    this.dataSource = new BookListDataSource(this.paginator, this.sort, this.bookService);
   }
 
-  waf() {
-    console.log('waf!');
-  }
+
+
 }

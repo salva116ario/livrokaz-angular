@@ -8,10 +8,13 @@ import { HeaderComponent } from './view/header/header.component';
 import { BookDetailComponent } from './view/book-detail/book-detail.component';
 import { FormsModule } from '@angular/forms';
 import {BookListComponent} from './view/book-list/book-list.component';
-  import { MatToolbarModule,
-         MatButtonModule, MatIconModule, MatListModule, MatTableModule, MatPaginatorModule,
-    MatSortModule, MatCheckboxModule, MatInputModule, MatSelectModule, MatRadioModule } from '@angular/material';
+  import {
+  MatToolbarModule,
+  MatButtonModule, MatIconModule, MatListModule, MatTableModule, MatPaginatorModule,
+  MatSortModule, MatCheckboxModule, MatInputModule, MatSelectModule, MatRadioModule, MatSortHeaderIntl
+} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,7 @@ import {HttpClientModule} from '@angular/common/http';
     MatCheckboxModule,
     MatPaginatorModule,
     MatSortModule,
-
+    BrowserAnimationsModule,
     /* FormsModule,
      MatToolbarModule,
      MatButtonModule,

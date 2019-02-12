@@ -2,15 +2,21 @@
 UNE LISTE DE LIVRES
 </h1>
 
-  <div class="mat-elevation-z8">
+  <div class="mat-elevation-z8 mat-app-background">
 
-    <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements" style="width:100%">
+    <table mat-table class="full-width-table" [dataSource]="dataSource" matSort style="width:100%">
 
     <!-- ID -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> ID </th>
       <td mat-cell *matCellDef="let element"> {{element.boId}} </td>
     </ng-container>
+
+      <!-- Couverture -->
+      <ng-container matColumnDef="cover">
+        <th mat-header-cell *matHeaderCellDef class="cover"> Couverture </th>
+        <td mat-cell *matCellDef="let element" class="cover"> <img src="{{element.boCover}}"  style="max-height:100px" /> </td>
+      </ng-container>
 
     <!-- Titre -->
     <ng-container matColumnDef="title">
@@ -36,11 +42,7 @@ UNE LISTE DE LIVRES
       <td mat-cell *matCellDef="let element"> {{element.style.stLabelFr}} </td>
     </ng-container>
 
-    <!-- Couverture -->
-    <ng-container matColumnDef="cover">
-      <th mat-header-cell *matHeaderCellDef> Couverture </th>
-      <td mat-cell *matCellDef="let element"> <img src="{{element.boCover}}"  style="max-height:100px" /> </td>
-    </ng-container>
+
 
     <!-- Catégorie -->
     <ng-container matColumnDef="isbn">
@@ -51,12 +53,13 @@ UNE LISTE DE LIVRES
       <!-- Catégorie -->
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef> Editer </th>
-        <td mat-cell *matCellDef="let element"> <button mat-raised-button (click)="onEdit()">EDITER</button> </td>
+        <td mat-cell *matCellDef="let element"> <button mat-raised-button routerLink="/book-detail/{{element.boId}}">EDITER</button> </td>
       </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-
+    <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20]">
+    </mat-paginator>
 </div>
 
