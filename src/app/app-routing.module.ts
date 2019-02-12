@@ -6,6 +6,7 @@ import { HomeComponent } from './view/home/home.component';
 import { LoginAdminComponent } from './view/login-admin/login-admin.component';
 import { LoginComponent } from './view/login/login.component';
 import { SignInComponent } from './view/sign-in/sign-in.component';
+import {BookDetailComponent} from './view/book-detail/book-detail.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -14,12 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'login-admin', component: LoginAdminComponent},
   { path: "notfound", component: NotFoundComponent },
-  { path: "**", redirectTo: "/notfound" }
-import {BookDetailComponent} from './view/book-detail/book-detail.component';
-
-const routes: Routes = [
-  {path: 'book-list', component: BookListComponent},
-  {path: 'book-detail/:id', component: BookDetailComponent }
+  { path: "**", redirectTo: "/notfound" },
 
 ];
 
