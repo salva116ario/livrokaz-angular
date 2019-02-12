@@ -5,8 +5,14 @@
 }
 .laposte{
 margin-left: 10%;
+position: relative
 }
 .simplon {
   margin-left: 10%;
 
+}
+.icons {
+  position: absolute;
+  right: 2%;
+  top: 45%
 }
