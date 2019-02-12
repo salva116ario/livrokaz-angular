@@ -36,14 +36,20 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatPaginatorModule,
     MatSortModule,
     BrowserAnimationsModule,
-    FormsModule,
+    /* FormsModule,
      MatToolbarModule,
      MatButtonModule,
+
      MatListModule,
+
+     MatPaginatorModule,
+     MatSortModule,
+
      MatInputModule,
      MatSelectModule,
-     MatRadioModule
+     MatRadioModule,
 
+     */
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,17 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container>* {
+  width: 100%;
+}
+.loginCard {
+    width: 30%;
+    border: 2px solid black;
+    margin-top: 10%;
+    margin-left: 25%;
+}
+.signInButton {
+  margin-left: 30%;
+}
