@@ -11,8 +11,17 @@ position: relative
   margin-left: 10%;
 
 }
+mat-icon {
+  margin-top: 700%;
+}
 .icons {
-  position: absolute;
-  right: 2%;
-  top: 45%
+  float: right;
+  cursor: pointer;
+}
+
+.lockIcon{
+
+}
+.openLockIcon {
+
 }

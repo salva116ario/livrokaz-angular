@@ -1,8 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-header></app-header>
-<div id="content">
-  <div class="header-spacer"></div>
-  <router-outlet></router-outlet>
-  <div class="footer-spacer"></div>
-</div>
+
+  <mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened class="menu">
+      <app-user-card></app-user-card>
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+
 <app-footer></app-footer>

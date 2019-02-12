@@ -1,0 +1,24 @@
+<mat-card class='loginCard'>
+  <div class="example-container">
+    <mat-form-field>
+      <input matInput placeholder="nom" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="adresse email" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="mot de passe" [type]='password' required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder=" confirmer mot de passe" [type]='password' required>
+    </mat-form-field>
+
+    <!-- <mat-form-field>
+      <mat-select placeholder="Select">
+        <mat-option value="option">Option</mat-option>
+      </mat-select>
+    </mat-form-field> -->
+  </div>
+    <button mat-raised-button class='signInButton' (click)='signIn()'>se connecter</button>
+</mat-card>

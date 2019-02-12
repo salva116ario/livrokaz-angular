@@ -1,8 +1,10 @@
 <div class='footer'>
-<img class='simplon' src="../../../assets/img/logo-Corp.png" alt="logo simplon.corp" height="200" width="200">
-<img class='laposte' src="../../../assets/img/logo_legroupelaposte_2.jpg" alt="logo laposte" height="200" width="250">
-<div class="icons">
-<mat-icon class="lockIcon" *ngIf="!isAdmin" (click)="!isAdmin ? isAdmin : !isAdmin">lock</mat-icon>
-<mat-icon classs="openLockIcon" *ngIf="isAdmin" (click)="adminDisConnect()">lock_open</mat-icon>
-</div>
+  <div clas='logo'>
+    <img class='simplon' src="../../../assets/img/logo-Corp.png" alt="logo simplon.corp" height="200" width="200">
+    <img class='laposte' src="../../../assets/img/logo_legroupelaposte_2.jpg" alt="logo laposte" height="200" width="250">
+  <div class="icons">
+    <mat-icon class="lockIcon" *ngIf="isAdmin == false ? true : false" (click)="adminConnect()">lock</mat-icon>
+    <mat-icon classs="openLockIcon" *ngIf="isAdmin" (click)="adminDisConnect()">lock_open</mat-icon>
+  </div>
+  </div>
 </div>
