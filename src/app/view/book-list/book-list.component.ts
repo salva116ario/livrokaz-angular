@@ -11,11 +11,17 @@ import {BehaviorSubject} from 'rxjs';
 export class BookListComponent implements OnInit {
 
   availableBooks: BehaviorSubject<Book[]>;
+  dataSource;
+  displayedColumns = ['id', 'title', 'author', 'editor', 'style', 'cover', 'isbn', 'action'];
 
   constructor(private bookService: BookService) { }
 
   ngOnInit() {
     this.availableBooks = this.bookService.availableBooks$;
+    this.dataSource = this.availableBooks;
   }
 
+  waf() {
+    console.log('waf!');
+  }
 }
