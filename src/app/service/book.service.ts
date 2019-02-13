@@ -31,7 +31,8 @@ export class BookService {
   public findBook(bookId: number): Observable<Book> {
 
     if (bookId) {
-      if (!this.availableBooks) {
+      if (this.availableBooks.length === 0) {
+        console.log(bookId);
         return this.getBooks().pipe(map(books => books.find(book => book.boId === bookId)));
       }
       for (const book of this.availableBooks) {

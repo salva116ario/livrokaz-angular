@@ -28,8 +28,14 @@ export class BookDetailComponent implements OnInit {
   this.bookId = +this.route.snapshot.params.id;
   this.bookService.findBook(this.bookId).subscribe(book => {
     this.bookEdited = book;
+    console.log(this.bookId);
     console.log(book);
   });
 
   }
+
+ onSubmit() {
+
+
+ }
 }
