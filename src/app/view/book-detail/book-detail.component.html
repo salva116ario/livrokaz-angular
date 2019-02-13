@@ -1,9 +1,144 @@
-<p>
-  book-detail works!
-  {{bookEdited?.boId}}
-  {{bookEdited?.boAuthor}}
-  {{bookEdited?.boCover}}
-  {{bookEdited?.boEditor}}
-  {{bookEdited?.boIsbn}}
+<h1 xmlns="http://www.w3.org/1999/html">Edition/création de livre</h1>
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div>
+    ID de l'ouvrage : {{bookEdited.boId}}
+  </div>
+  <div>
+  <img src="{{bookEdited.boCover}}" alt="photo de couverture">
+  <label for="boCover"><br />Url de l'image : <br /> </label>
+  <input type="text" id="boCover" placeholder="entrez l'URL de l'image" [(ngModel)]="bookEdited.boCover" name="boCover" required>
+  </div>
+  <div>
+    <label for="boTitle">Titre de l'ouvrage : <br /></label>
+    <input type="text" id="boTitle" placeholder="Entrez le titre" [(ngModel)]="bookEdited.boTitle" name="boTitle" required>
+  </div>
+  <div>
+    <label for="boAuthor">Auteur : <br /></label>
+    <input type="text" id="boAuthor" placeholder="Entrez le nom de l'auteur" [(ngModel)]="bookEdited.boAuthor" name="boAuthor" required>
+  </div>
+  <div>
+    <label for="stLabelFr">Catégorie : <br /></label>
+    <select name="stLabelFr" placeholder="Entrez le nom de l'auteur" [(ngModel)]="bookEdited.style.stLabelFr" required>
+      <option value="Arts">Arts</option>
+      <option value="Bandes dessinées">Bandes dessinées</option>
+    </select>
+  </div>
+  <div>
+    <label for="boLanguage">Langue de l'ouvrage : <br /></label>
+    <input type="text" id="bolanguage" placeholder="Entrez la langue de l'ouvrage" [(ngModel)]="bookEdited.boLanguage" name="boLanguage" required>
+  </div>
+  <div>
+    <label for="boReleaseDate">Date de sortie : <br /></label>
+    <input type="date" id="boReleaseDate" placeholder="Entrez la date de sortie" [(ngModel)]="bookEdited.boReleaseDate" name="boReleaseDate" required>
+  </div>
+  <div>
+    <label for="boTopic">Topic du livre : <br /></label>
+  <!--  <input type="text" id="boTopic" placeholder="Entrez le nom de l'auteur" [(ngModel)]="bookEdited.boTopic" name="boTopic" required> -->
+    <textarea id="boTopic" rows="2" cols="80" placeholder="Entrez le topic du livre" [(ngModel)]="bookEdited.boTopic" name="boTopic">{{bookEdited.boTopic}}</textarea>
+  </div>
+  <div>
+    <label for="boSynopsys">Synopsys du livre : <br /></label>
+    <!--  <input type="text" id="boTopic" placeholder="Entrez le nom de l'auteur" [(ngModel)]="bookEdited.boTopic" name="boTopic" required> -->
+    <textarea id="boSynopsys" rows="6" cols="80" placeholder="Entrez le synopsys du livre" [(ngModel)]="bookEdited.boSynopsys" name="boSynopsys">{{bookEdited.boSynopsys}}</textarea>
+  </div>
+  <div>
+    <label for="boStock">Exemplaires en stock : <br /></label>
+    <input type="number" id="boStock" placeholder="Entrez le nombre d'exemplaires en stock" [(ngModel)]="bookEdited.boStock" name="boStock" required>
+  </div>
+  <div>
+    <label for="boPrice">Prix de vente (en euros) : <br /></label>
+    <input type="number" id="boPrice" placeholder="Entrez le prix de vente" [(ngModel)]="bookEdited.boPrice" name="boPrice" required>
+  </div>
+  <div>
+    <label for="boIsbn">numéro ISBN : <br /></label>
+    <input type="text" id="boIsbn" placeholder="Entrez le numéro ISBN du livre" [(ngModel)]="bookEdited.boIsbn" name="boIsbn" required>
+  </div>
+  <button class="btn btn-primary" type="submit">Enregistrer</button>
 
-</p>
+
+
+<!--
+<mat-card>ID de l'ouvrage : {{bookEdited.boId}}
+  <p></p>
+
+
+ <img mat-card-image src="{{bookEdited.boCover}}" alt="photo de couverture">
+  <p>adresse URL de la photo de couverture : <input type="text" placeholder="bookEdited.boCover"></p>
+
+  <mat-card-content>
+    <p>Titre de l'ouvrage : <input type="text" placeholder="{{bookEdited.boTitle}}"></p>
+    <p>Auteur : <input type="text" placeholder="{{bookEdited.boAuthor}}"></p>
+    <p>Catégorie : <input type="text" placeholder="{{bookEdited.style.stLabelFr}}"></p>
+    <p>Langue de l'ouvrage : <input type="text" placeholder="{{bookEdited.boLanguage}}"></p>
+    <p>date de sortie : <input type="text" placeholder="{{bookEdited.boReleaseDate}}"></p>
+
+    <p>topic : </p>
+    <p>
+      <textarea rows="2" cols="80">{{bookEdited.boTopic}}</textarea>
+
+    <p>synopsys :</p>
+      <p><textarea rows="10" [cols]="80"> {{bookEdited.boSynopsys}}</textarea></p>
+  <p>Exemplaires en stock : <input type="text" placeholder="{{bookEdited.boStock}}"></p>
+    <p>Prix de vente : <input type="number" placeholder="{{bookEdited.boPrice}}"> €</p>
+    <p><input type="text" placeholder="{{bookEdited.boIsbn}}"></p>
+
+  </mat-card-content>
+
+</mat-card>
+-->
+
+
+<!--
+
+<<form [formGroup]="bookForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="form-card">
+    <mat-card-header>
+      <mat-card-title>Edition de livre</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nom" formControlName="name">
+            <mat-error *ngIf="bookForm.controls['name'].hasError('required')">
+              Le nom du livre est <strong>obligatoire</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Catégorie" formControlName="category">
+              <mat-option *ngFor="let category of categories" [value]="category">
+                {{ category.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="bookForm.controls['category'].hasError('required')">
+              Le style du livre est <strong>obligatoire</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Date de création" formControlName="creationDate">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Date de mise à jour" formControlName="updateDate">
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">SAUVER</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
+<app-cards [book]=book></app-cards>
+
+-->
