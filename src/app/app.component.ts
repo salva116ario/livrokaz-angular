@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { BookService } from './service/book.service';
+import {Component, OnInit} from '@angular/core';
+import {BookService} from './service/book.service';
+import {StyleService} from './service/style.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,13 @@ import { BookService } from './service/book.service';
 })
 export class AppComponent implements OnInit {
   title = 'livrokaz';
-  constructor(private bookService: BookService) {}
+
+  constructor(private bookService: BookService,
+              private styleService: StyleService) {
+  }
+
   ngOnInit() {
     this.bookService.publishBooks();
+    this.styleService.publishStyles();
   }
 }
