@@ -3,14 +3,13 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {Book} from '../model/book.model';
 import {map} from 'rxjs/operators';
-import {forEach} from '@angular/router/src/utils/collection';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
 
-  private availableBooks: Book[];
+  private availableBooks: Book[] = [];
   availableBooks$: BehaviorSubject<Book[]> = new BehaviorSubject(this.availableBooks);
 
   constructor(private httpClient: HttpClient) {

@@ -1,9 +1,10 @@
-import { DataSource } from '@angular/cdk/collections';
-import { MatPaginator, MatSort } from '@angular/material';
-import { map } from 'rxjs/operators';
-import { Observable, merge, BehaviorSubject } from 'rxjs';
+import {DataSource} from '@angular/cdk/collections';
+import {MatPaginator, MatSort } from '@angular/material';
+import {map} from 'rxjs/operators';
+import {Observable, merge, BehaviorSubject} from 'rxjs';
 import {Book} from '../../model/book.model';
 import {BookService} from '../../service/book.service';
+
 
 
 /**
@@ -11,21 +12,16 @@ import {BookService} from '../../service/book.service';
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class BookListDataSource extends DataSource<Book> {
+  export class BookListDataSource extends DataSource<Book> {
+  private dataStream: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>([]);
 
-  /*dataChange: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>([]);
-  observable.subscribe(this.dataChange)
-  this.myService.getObjects().subscribe(res => this.dataChange.next(res))*/
-private dataStream: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>([]);
+  set data(book: Book[]) {
+    this.dataStream.next(book);
+  }
 
-  //private dataStream = this.bookService.availableBooks$;
-  set data(book: Book[]) { this.dataStream.next(book); }
   get data(): Book[] {
-    if (!this.dataStream.getValue()) {
-      return null;
-    }
-    console.log(" ------------------> dataStream.value : " + this.dataStream.getValue());
-    return this.dataStream.value; }
+    return this.dataStream.value;
+  }
 
   constructor(private paginator: MatPaginator, private sort: MatSort, private bookService: BookService) {
     super();
@@ -37,8 +33,7 @@ private dataStream: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>([]);
    * @returns A stream of the items to be rendered.
    */
   connect(): Observable<Book[]> {
-    this.bookService.availableBooks$.subscribe(res => this.dataStream.next(res));
-  // this.dataStream = this.bookService.availableBooks$;
+    this.dataStream = this.bookService.availableBooks$;
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -48,7 +43,7 @@ private dataStream: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>([]);
     ];
 
     // Set the paginator's length
-      this.paginator.length = this.dataStream.getValue().length;
+    this.paginator.length = this.dataStream.getValue().length;
 
     return merge(...dataMutations).pipe(map(() => {
       return this.getPagedData(this.getSortedData([...this.data]));
@@ -59,7 +54,8 @@ private dataStream: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>([]);
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
-  disconnect() {}
+  disconnect() {
+  }
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,
@@ -82,10 +78,18 @@ private dataStream: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>([]);
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'id': return compare(+a.boId, +b.boId, isAsc);
-        case 'title': return compare(a.boTitle, b.boTitle, isAsc);
-        case 'author': return compare(a.boAuthor, b.boAuthor, isAsc);
-        default: return 0;
+        case 'id':
+          return compare(+a.boId, +b.boId, isAsc);
+        case 'title':
+          return compare(a.boTitle, b.boTitle, isAsc);
+        case 'author':
+          return compare(a.boAuthor, b.boAuthor, isAsc);
+        case 'editor':
+          return compare(a.boEditor, b.boEditor, isAsc);
+        case 'style':
+          return compare(a.style.stId, b.style.stId, isAsc);
+        default:
+          return 0;
       }
     });
   }
@@ -95,3 +99,5 @@ private dataStream: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>([]);
 function compare(a, b, isAsc) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
+
+

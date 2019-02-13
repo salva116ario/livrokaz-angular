@@ -6,14 +6,11 @@ export class Style {
   public stLabelFr: string;
   public books: Book[];
 
-
   constructor(stId: number, stLabelEn: string, stLabelFr: string, books: Book[]) {
     this.stId = stId;
     this.stLabelEn = stLabelEn;
     this.stLabelFr = stLabelFr;
     this.books = books;
   }
-
-
 }
 

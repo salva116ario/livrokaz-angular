@@ -14,6 +14,4 @@ export class Role {
     this.customers = customers;
     this.employees = employees;
   }
-
-
 }
