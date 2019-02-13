@@ -13,9 +13,19 @@ import {BookService} from '../../service/book.service';
  */
 export class BookListDataSource extends DataSource<Book> {
 
-  private dataStream = this.bookService.availableBooks$;
-  set data(v: Book[]) { this.dataStream.next(v); }
-  get data(): Book[] { return this.dataStream.value; }
+  /*dataChange: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>([]);
+  observable.subscribe(this.dataChange)
+  this.myService.getObjects().subscribe(res => this.dataChange.next(res))*/
+private dataStream: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>([]);
+
+  //private dataStream = this.bookService.availableBooks$;
+  set data(book: Book[]) { this.dataStream.next(book); }
+  get data(): Book[] {
+    if (!this.dataStream.getValue()) {
+      return null;
+    }
+    console.log(" ------------------> dataStream.value : " + this.dataStream.getValue());
+    return this.dataStream.value; }
 
   constructor(private paginator: MatPaginator, private sort: MatSort, private bookService: BookService) {
     super();
@@ -27,7 +37,8 @@ export class BookListDataSource extends DataSource<Book> {
    * @returns A stream of the items to be rendered.
    */
   connect(): Observable<Book[]> {
-
+    this.bookService.availableBooks$.subscribe(res => this.dataStream.next(res));
+  // this.dataStream = this.bookService.availableBooks$;
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -37,7 +48,7 @@ export class BookListDataSource extends DataSource<Book> {
     ];
 
     // Set the paginator's length
-    this.paginator.length = this.data.length;
+      this.paginator.length = this.dataStream.getValue().length;
 
     return merge(...dataMutations).pipe(map(() => {
       return this.getPagedData(this.getSortedData([...this.data]));
