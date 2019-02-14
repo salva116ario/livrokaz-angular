@@ -4,7 +4,8 @@
   margin-left: 5%;
   position: relative;
   color: antiquewhite;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3)
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3),
+  1px 1px 1px rgb(115, 49, 177, 0.5)
 }
 
 .authentication {
@@ -19,13 +20,15 @@
   display: inline-block;
   cursor: pointer;
   padding-right: 10px ;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3)
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3),
+  1px 1px 1px rgb(115, 49, 177, 0.8)
 }
 
 .signIn {
   display: inline-block;
   cursor: pointer;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3)
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3),
+  1px 1px 1px rgb(115, 49, 177, 0.8)
 }
 
 .effect7 {
@@ -43,7 +46,7 @@
   z-index: -1;
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
   -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 20px rgba(115, 49, 177, 0.8);
   top: 0;
   bottom: 0;
   left: 10px;

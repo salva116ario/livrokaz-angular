@@ -1,4 +1,4 @@
-<form ngNoForm>
+<form >
 
   <mat-card class='searchCard '>
       <mat-form-field class="searchField">
@@ -6,7 +6,7 @@
           name='search' ngDefaultControl required>
       </mat-form-field>
       <mat-form-field class='selectBar'>
-        <mat-select placeholder="" [(ngModel)]="requestform.selectType" name='selectType' ngDefaultControl required>
+        <mat-select placeholder="titre" value='titre' [(ngModel)]="requestform.selectType" name='selectType' ngDefaultControl required>
           <mat-option value="author">auteur</mat-option>
           <mat-option value="editor">éditeur</mat-option>
           <mat-option value="titre">titre</mat-option>

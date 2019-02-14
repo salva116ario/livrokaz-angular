@@ -15,7 +15,9 @@ export class StyleService {
   }
 
   private getStyles(): Observable<Style[]> {
-    return this.httpClient.get<Style[]>('http://localhost:8080/style/getall');
+    return this.httpClient.get<Style[]>(
+      "http://192.168.1.212:8080/style/getall"
+    );
   }
 
   public publishStyles() {
