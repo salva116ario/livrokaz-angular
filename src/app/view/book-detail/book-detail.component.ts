@@ -33,13 +33,14 @@ export class BookDetailComponent implements OnInit {
     }
     this.bookService.findBook(this.bookId).subscribe(book => {
       this.bookEdited = book;
-    });
-
-  }
+      });
+    }
 
   onSubmit() {
     if (!this.newBook) {
       this.bookService.updateBook(this.bookEdited);
+    } else {
+      this.bookService.createBook(this.bookEdited);
     }
   }
 }

@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {Book} from '../model/book.model';
-import {map} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
+import { Style } from '../model/style.model';
 
 @Injectable({
   providedIn: 'root'
@@ -32,15 +33,11 @@ export class BookService {
 
     if (bookId) {
       if (this.availableBooks.length === 0) {
-        console.log(bookId);
         return this.getBooks().pipe(map(books => books.find(book => book.boId === bookId)));
-      }
-      for (const book of this.availableBooks) {
-        console.log(book);
       }
       return of(this.availableBooks.find(book => book.boId === bookId));
     } else {
-      return of(new Book(null, null, '', '', '', '', '', 0, new Date(), 0, '', '', '', null));
+      return of(new Book(null, new Style(0, 'Undefined', 'Non défini', null), 'PAS D\'AUTEUR PUISQUE NOUVEAU LIVRE', 'https://www.avesta.fr/Content/Images/Products/45512e57-f5e0-4d30-a20f-8915d64d9b95.jpg', '', '', '', 0, new Date(), 0, '', '', '', null));
     }
   }
 
@@ -51,16 +48,30 @@ export class BookService {
     );
   }
 
+   public createBook(book: Book) {
+     this.httpClient.post<Book>('http://localhost:8080/book/add', book).subscribe(createdBook => {
+         this.availableBooks.push(book);
+         this.availableBooks$.next(this.availableBooks);
+       }
+     );
+   }
+
+  public deleteBook(bookId: number) {
+   this.httpClient.delete('http://localhost:8080/book/delete/' + bookId).subscribe(deletedBook => {
+     this.publishBooks();
+   });
+  }
+
   public findByAuthor(author: string): Observable<Book[]> {
     return this.httpClient
-      .get<Book[]>("http://192.168.1.212:8080/book/getbyauthor/{author}")
+      .get<Book[]>("http://localhost:8080/book/getbyauthor/{author}")
   }
   public findByEditor(title: string): Observable<Book[]> {
     return this.httpClient
-      .get<Book[]>("http://192.168.1.212:8080/book//getbyeditor/{editor}")
+      .get<Book[]>("http://localhost:8080/book//getbyeditor/{editor}")
   }
   public findByTitle(author: string): Observable<Book[]> {
     return this.httpClient
-      .get<Book[]>("http://192.168.1.212:8080/book//getbytitle/{title}");
+      .get<Book[]>("http://localhost:8080/book//getbytitle/{title}");
   }
 }

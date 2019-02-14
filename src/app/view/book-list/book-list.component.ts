@@ -20,7 +20,7 @@ import {Book} from '../../model/book.model';
 })
 export class BookListComponent implements OnInit {
   dataSource: BookListDataSource;
-  displayedColumns = ['id', 'cover', 'title', 'author', 'editor', 'style', 'price', 'stock', 'action'];
+  displayedColumns = ['id', 'cover', 'title', 'author', 'editor', 'style', 'price', 'stock', 'edit', 'delete'];
   expandedElement: Book | null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -30,6 +30,11 @@ export class BookListComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new BookListDataSource(this.paginator, this.sort, this.bookService);
+  }
+
+  deleteBook(bookId: number) {
+    alert('Confirmez vous la suppression du livre id ' + bookId);
+    this.bookService.deleteBook(bookId);
   }
 }
 
