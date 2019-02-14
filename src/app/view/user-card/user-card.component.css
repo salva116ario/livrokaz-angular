@@ -1,6 +1,17 @@
 .user-card {
-    border:1px solid black;
-    width: 79%;
+    border:2px solid #555;
+    width: 76%;
     height: 45vmin;
-    margin-top: 17%;
+    margin-top: 20%;
+    margin-left: 17px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(0, 0, 0, 0.1) inset;
+    background-color: darkgray;
+    color: antiquewhite;
+    border-radius: 6px;
+    
+}
+.searchButton {
+  margin-left: 10%;
+  display: inline-table;
 }

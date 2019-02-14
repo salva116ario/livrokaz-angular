@@ -1,19 +1,32 @@
 .footer {
-    height:50%;
-    width: auto;
-    border: 1px solid black;
+    height:10%;
+    width: auto;background-color: gray;
   margin-top: 20px;
 }
 .laposte{
 margin-left: 10%;
-position: relative
+height:50px;
+width: 50px;
+position: relative;
+background-color: grey;
+border: 2px solid #555;
+border-radius: 6px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3),
+0 0 40px rgba(0, 0, 0, 0.1);
 }
 .simplon {
+  height: 50px;
+  width: 50px;
+  max-height: 150px;
   margin-left: 10%;
-
+  background-color: grey;
+  border: 2px solid #555;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3),
+  0 0 40px rgba(0, 0, 0, 0.1);
 }
 mat-icon {
-  margin-top: 700%;
+  margin-top: 130%;
 }
 .icons {
   float: right;

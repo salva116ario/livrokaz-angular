@@ -33,7 +33,8 @@ import { HomeComponent } from "./view/home/home.component";
 import { LoginAdminComponent } from "./view/login-admin/login-admin.component";
 import { LoginComponent } from "./view/login/login.component";
 import { SignInComponent } from "./view/sign-in/sign-in.component";
-
+import { MatVideoModule } from "mat-video";
+import { SearchBarComponent } from './view/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { SignInComponent } from "./view/sign-in/sign-in.component";
     HomeComponent,
     LoginAdminComponent,
     LoginComponent,
-    SignInComponent
+    SignInComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,10 @@ import { SignInComponent } from "./view/sign-in/sign-in.component";
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatVideoModule
     /* FormsModule,
      MatToolbarModule,
 
