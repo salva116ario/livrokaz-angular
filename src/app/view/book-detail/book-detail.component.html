@@ -7,10 +7,9 @@
     </label>
     <mat-hint>ID de l'ouvrage</mat-hint>
   </mat-form-field>
-  <img src="{{bookEdited.boCover}}" alt="photo de couverture">
+  <br /><img src="{{bookEdited.boCover}}" alt="page de couverture" >
   <mat-form-field>
   <label for="boCover"></label>
-
   <input matInput type="text" id="boCover" placeholder="entrez l'URL de la page de couverture" [(ngModel)]="bookEdited.boCover" name="boCover" required>
     </mat-form-field>
 
@@ -30,6 +29,7 @@
       <option *ngFor="let style of availableStyles.getValue()">{{style.stLabelFr}}</option>
     </select>
       </mat-form-field>
+
 
   <mat-form-field>
     <label for="boLanguage"></label>
