@@ -105,12 +105,5 @@ export class BookService {
     }
   }
 
-  public publishBookBy(search: string, selectType: string) {
-    console.log(search, selectType)
-    this.filterBy(search, selectType).subscribe(
-      bookList => {
-        this.availableBooks = bookList;
-        this.availableBooks$.next(this.availableBooks);
-      });
-  }
+  
 }
