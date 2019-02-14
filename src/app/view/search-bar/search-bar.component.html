@@ -1,0 +1,22 @@
+<form ngNoForm>
+
+  <mat-card class='searchCard '>
+      <mat-form-field class="searchField">
+        <input matInput class='inputSearch' placeholder="recherche" value="recherche" [(ngModel)]="requestform.search"
+          name='search' ngDefaultControl required>
+      </mat-form-field>
+      <mat-form-field class='selectBar'>
+        <mat-select placeholder="" [(ngModel)]="requestform.selectType" name='selectType' ngDefaultControl required>
+          <mat-option value="author">auteur</mat-option>
+          <mat-option value="editor">éditeur</mat-option>
+          <mat-option value="titre">titre</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <button mat-raised-button class='searchButton' (click)="reqSearch(requestform)">
+        <mat-icon>search</mat-icon>
+      </button>
+  </mat-card>
+
+</form>

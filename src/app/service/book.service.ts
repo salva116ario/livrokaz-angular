@@ -51,4 +51,16 @@ export class BookService {
     );
   }
 
+  public findByAuthor(author: string): Observable<Book[]> {
+    return this.httpClient
+      .get<Book[]>("http://192.168.1.212:8080/book/getbyauthor/{author}")
+  }
+  public findByEditor(title: string): Observable<Book[]> {
+    return this.httpClient
+      .get<Book[]>("http://192.168.1.212:8080/book//getbyeditor/{editor}")
+  }
+  public findByTitle(author: string): Observable<Book[]> {
+    return this.httpClient
+      .get<Book[]>("http://192.168.1.212:8080/book//getbytitle/{title}");
+  }
 }

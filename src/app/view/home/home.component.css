@@ -1,4 +1,18 @@
-h3 {
-    text-align: center;
-    font-size: 25px;
+.backVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  opacity: 0.6;
+  z-index: 0;
 }
+
+.controls .visible .ng-star-inserted {
+  display: none;
+}
+.controls .ng-star-inserted .hidden {
+  display: none;
+
+}
+
