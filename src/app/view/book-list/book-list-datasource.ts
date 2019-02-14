@@ -1,9 +1,10 @@
-import { DataSource } from '@angular/cdk/collections';
-import { MatPaginator, MatSort } from '@angular/material';
-import { map } from 'rxjs/operators';
-import { Observable, merge, BehaviorSubject } from 'rxjs';
+import {DataSource} from '@angular/cdk/collections';
+import {MatPaginator, MatSort } from '@angular/material';
+import {map} from 'rxjs/operators';
+import {Observable, merge, BehaviorSubject} from 'rxjs';
 import {Book} from '../../model/book.model';
 import {BookService} from '../../service/book.service';
+
 
 
 /**
@@ -11,11 +12,16 @@ import {BookService} from '../../service/book.service';
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class BookListDataSource extends DataSource<Book> {
+  export class BookListDataSource extends DataSource<Book> {
+  private dataStream: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>([]);
 
-  private dataStream = this.bookService.availableBooks$;
-  set data(v: Book[]) { this.dataStream.next(v); }
-  get data(): Book[] { return this.dataStream.value; }
+  set data(book: Book[]) {
+    this.dataStream.next(book);
+  }
+
+  get data(): Book[] {
+    return this.dataStream.value;
+  }
 
   constructor(private paginator: MatPaginator, private sort: MatSort, private bookService: BookService) {
     super();
@@ -27,7 +33,7 @@ export class BookListDataSource extends DataSource<Book> {
    * @returns A stream of the items to be rendered.
    */
   connect(): Observable<Book[]> {
-
+    this.dataStream = this.bookService.availableBooks$;
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -37,7 +43,7 @@ export class BookListDataSource extends DataSource<Book> {
     ];
 
     // Set the paginator's length
-    this.paginator.length = this.data.length;
+    this.paginator.length = this.dataStream.getValue().length;
 
     return merge(...dataMutations).pipe(map(() => {
       return this.getPagedData(this.getSortedData([...this.data]));
@@ -48,7 +54,8 @@ export class BookListDataSource extends DataSource<Book> {
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
-  disconnect() {}
+  disconnect() {
+  }
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,
@@ -71,10 +78,18 @@ export class BookListDataSource extends DataSource<Book> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'id': return compare(+a.boId, +b.boId, isAsc);
-        case 'title': return compare(a.boTitle, b.boTitle, isAsc);
-        case 'author': return compare(a.boAuthor, b.boAuthor, isAsc);
-        default: return 0;
+        case 'id':
+          return compare(+a.boId, +b.boId, isAsc);
+        case 'title':
+          return compare(a.boTitle, b.boTitle, isAsc);
+        case 'author':
+          return compare(a.boAuthor, b.boAuthor, isAsc);
+        case 'editor':
+          return compare(a.boEditor, b.boEditor, isAsc);
+        case 'style':
+          return compare(a.style.stId, b.style.stId, isAsc);
+        default:
+          return 0;
       }
     });
   }
@@ -84,3 +99,5 @@ export class BookListDataSource extends DataSource<Book> {
 function compare(a, b, isAsc) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
+
+

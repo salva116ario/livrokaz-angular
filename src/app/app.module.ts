@@ -1,29 +1,30 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { FooterComponent } from './view/footer/footer.component';
+import { HeaderComponent } from './view/header/header.component';
+import { BookDetailComponent } from './view/book-detail/book-detail.component';
+import { FormsModule } from '@angular/forms';
+import {BookListComponent} from './view/book-list/book-list.component';
 
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { FooterComponent } from "./view/footer/footer.component";
-import { HeaderComponent } from "./view/header/header.component";
-import { BookDetailComponent } from "./view/book-detail/book-detail.component";
-import { FormsModule } from "@angular/forms";
-import { BookListComponent } from "./view/book-list/book-list.component";
-import {
+
+  import {
   MatToolbarModule,
-  MatGridListModule,
-  MatFormFieldModule,
   MatButtonModule,
   MatIconModule,
   MatListModule,
   MatTableModule,
   MatPaginatorModule,
-  MatSidenavModule,
   MatSortModule,
   MatCheckboxModule,
   MatInputModule,
   MatSelectModule,
   MatRadioModule,
-  MatCardModule
+  MatCardModule,
+  MatSidenavModule,
+  MatFormFieldModule,
+  MatGridListModule
 } from "@angular/material";
 import { HttpClientModule } from "@angular/common/http";
 import { UserCardComponent } from "./view/user-card/user-card.component";
@@ -44,13 +45,15 @@ import { SearchBarComponent } from './view/search-bar/search-bar.component';
     FooterComponent,
     HeaderComponent,
     BookDetailComponent,
-    UserCardComponent,
-    NotFoundComponent,
     HomeComponent,
+    SignInComponent,
     LoginAdminComponent,
     LoginComponent,
     SignInComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    NotFoundComponent,
+    UserCardComponent
+
   ],
   imports: [
     BrowserModule,
@@ -61,9 +64,7 @@ import { SearchBarComponent } from './view/search-bar/search-bar.component';
     MatCheckboxModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCardModule,
     MatGridListModule,
-    MatSidenavModule,
     NoopAnimationsModule,
     MatFormFieldModule,
     MatSelectModule,
@@ -71,23 +72,14 @@ import { SearchBarComponent } from './view/search-bar/search-bar.component';
     MatButtonModule,
     BrowserAnimationsModule,
     FormsModule,
-    BrowserAnimationsModule,
-    MatVideoModule
-    /* FormsModule,
-     MatToolbarModule,
-
-     MatListModule,
-
-     MatPaginatorModule,
-     MatSortModule,
-
-     MatInputModule,
-     MatSelectModule,
-     MatRadioModule,
-
-     */
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule,
+    MatRadioModule,
+    MatSidenavModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

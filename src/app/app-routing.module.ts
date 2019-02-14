@@ -10,6 +10,7 @@ import { BookDetailComponent } from "./view/book-detail/book-detail.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
+  { path: 'book-detail/:id', component: BookDetailComponent },
   { path: "book-list", component: BookListComponent },
   { path: "signin", component: SignInComponent },
   { path: "login", component: LoginComponent },
