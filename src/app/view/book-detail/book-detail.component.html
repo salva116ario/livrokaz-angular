@@ -1,57 +1,72 @@
-<h1 xmlns="http://www.w3.org/1999/html">Edition/création de livre</h1>
+<h1>Edition/création de livre</h1>
+
 <form *ngIf="bookEdited" (ngSubmit)="onSubmit(f)" #f="ngForm">
-  <div>
-    ID de l'ouvrage : {{bookEdited.boId}}
-  </div>
-  <div>
+  <mat-form-field>
+    <label for="boId">
+      <input matInput readonly type="text" id="boId" [(ngModel)]="bookEdited.boId" name="boId">
+    </label>
+    <mat-hint>ID de l'ouvrage</mat-hint>
+  </mat-form-field>
   <img src="{{bookEdited.boCover}}" alt="photo de couverture">
-  <label for="boCover"><br />Url de l'image : <br /> </label>
-  <input type="text" id="boCover" placeholder="entrez l'URL de l'image" [(ngModel)]="bookEdited.boCover" name="boCover" required>
-  </div>
-  <div>
-    <label for="boTitle">Titre de l'ouvrage : <br /></label>
-    <input type="text" id="boTitle" placeholder="Entrez le titre" [(ngModel)]="bookEdited.boTitle" name="boTitle" required>
-  </div>
-  <div>
-    <label for="boAuthor">Auteur : <br /></label>
-    <input type="text" id="boAuthor" placeholder="Entrez le nom de l'auteur" [(ngModel)]="bookEdited.boAuthor" name="boAuthor" required>
-  </div>
-  <div>
-    <label for="stLabelFr">Catégorie : <br /></label>
-    <select name="stLabelFr" id="stLabelFr" [(ngModel)]="bookEdited.style.stLabelFr" required>
+  <mat-form-field>
+  <label for="boCover"></label>
+
+  <input matInput type="text" id="boCover" placeholder="entrez l'URL de la page de couverture" [(ngModel)]="bookEdited.boCover" name="boCover" required>
+    </mat-form-field>
+
+  <mat-form-field>
+    <label for="boTitle"></label>
+    <input matInput type="text" id="boTitle" placeholder="Entrez le titre" [(ngModel)]="bookEdited.boTitle" name="boTitle" required>
+    </mat-form-field>
+
+  <mat-form-field>
+    <label for="boAuthor"></label>
+    <input matInput type="text" id="boAuthor" placeholder="Entrez le nom de l'auteur" [(ngModel)]="bookEdited.boAuthor" name="boAuthor" required>
+      </mat-form-field>
+
+  <mat-form-field>
+    <label for="stLabelFr"></label>
+    <select matNativeControl name="stLabelFr" id="stLabelFr" placeholder="Choisissez la catégorie" [(ngModel)]="bookEdited.style.stLabelFr" required>
       <option *ngFor="let style of availableStyles.getValue()">{{style.stLabelFr}}</option>
     </select>
-  </div>
-  <div>
-    <label for="boLanguage">Langue de l'ouvrage : <br /></label>
-    <input type="text" id="boLanguage" placeholder="Entrez la langue de l'ouvrage" [(ngModel)]="bookEdited.boLanguage" name="boLanguage" required>
-  </div>
-  <div>
-    <label for="boReleaseDate">Date de sortie : <br /></label>
-    <input type="date" id="boReleaseDate" placeholder="Entrez la date de sortie" [(ngModel)]="bookEdited.boReleaseDate" name="boReleaseDate" required>
-  </div>
-  <div>
-    <label for="boTopic">Topic du livre : <br /></label>
-  <!--  <input type="text" id="boTopic" placeholder="Entrez le nom de l'auteur" [(ngModel)]="bookEdited.boTopic" name="boTopic" required> -->
-    <textarea id="boTopic" rows="2" cols="80" placeholder="Entrez le topic du livre" [(ngModel)]="bookEdited.boTopic" name="boTopic">{{bookEdited.boTopic}}</textarea>
-  </div>
-  <div>
-    <label for="boSynopsys">Synopsys du livre : <br /></label>
-    <!--  <input type="text" id="boTopic" placeholder="Entrez le nom de l'auteur" [(ngModel)]="bookEdited.boTopic" name="boTopic" required> -->
-    <textarea id="boSynopsys" rows="6" cols="80" placeholder="Entrez le synopsys du livre" [(ngModel)]="bookEdited.boSynopsys" name="boSynopsys">{{bookEdited.boSynopsys}}</textarea>
-  </div>
-  <div>
-    <label for="boStock">Exemplaires en stock : <br /></label>
-    <input type="number" id="boStock" placeholder="Entrez le nombre d'exemplaires en stock" [(ngModel)]="bookEdited.boStock" name="boStock" required>
-  </div>
-  <div>
-    <label for="boPrice">Prix de vente (en euros) : <br /></label>
-    <input type="number" id="boPrice" placeholder="Entrez le prix de vente" [(ngModel)]="bookEdited.boPrice" name="boPrice" required>
-  </div>
-  <div>
-    <label for="boIsbn">numéro ISBN : <br /></label>
-    <input type="text" id="boIsbn" placeholder="Entrez le numéro ISBN du livre" [(ngModel)]="bookEdited.boIsbn" name="boIsbn" required>
-  </div>
+      </mat-form-field>
+
+  <mat-form-field>
+    <label for="boLanguage"></label>
+    <input matInput type="text" id="boLanguage" placeholder="Entrez la langue de l'ouvrage" [(ngModel)]="bookEdited.boLanguage" name="boLanguage" required>
+    </mat-form-field>
+
+  <mat-form-field>
+    <label for="boReleaseDate"></label>
+    <input matInput type="date" id="boReleaseDate" placeholder="Entrez la date de sortie" [(ngModel)]="bookEdited.boReleaseDate" name="boReleaseDate" required>
+    </mat-form-field>
+
+  <mat-form-field>
+    <label for="boTopic"></label>
+    <textarea matInput id="boTopic" rows="2" cols="80" placeholder="Entrez le topic du livre" [(ngModel)]="bookEdited.boTopic" name="boTopic">{{bookEdited.boTopic}}</textarea>
+    </mat-form-field>
+
+  <mat-form-field>
+    <label for="boSynopsys"></label>
+    <textarea matInput id="boSynopsys" rows="6" cols="80" placeholder="Entrez le synopsys du livre" [(ngModel)]="bookEdited.boSynopsys" name="boSynopsys">{{bookEdited.boSynopsys}}</textarea>
+    </mat-form-field>
+
+  <mat-form-field>
+    <label for="boStock"></label>
+    <input matInput type="number" id="boStock" placeholder="Entrez le nombre d'exemplaires en stock" [(ngModel)]="bookEdited.boStock" name="boStock" required>
+    </mat-form-field>
+
+  <mat-form-field>
+    <label for="boPrice"></label>
+    <input matInput type="number" id="boPrice" placeholder="Entrez le prix de vente (en euros)" [(ngModel)]="bookEdited.boPrice" name="boPrice" required>
+    </mat-form-field>
+
+  <mat-form-field>
+    <label for="boIsbn"></label>
+    <input matInput type="text" id="boIsbn" placeholder="Entrez le numéro ISBN du livre" [(ngModel)]="bookEdited.boIsbn" name="boIsbn" required>
+    </mat-form-field>
+
+  <br />
   <button class="btn btn-primary" type="submit">Enregistrer</button>
 </form>
 
