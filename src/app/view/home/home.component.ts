@@ -27,16 +27,4 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.availableBooks = this.bookService.availableBooks$;
   }
-  reqSearch(value) {
-    console.log(value);
-
-    if (value.selecType === "author") {
-      const test = this.bookService.findByAuthor(value.search);
-      console.log(test);
-    } else if (value.selecType === "editor") {
-      this.bookService.findByEditor(value.search);
-    } else if (value.selecType === "title") {
-      this.bookService.findByEditor(value.search);
-    }
-  }
 }

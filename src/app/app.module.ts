@@ -49,10 +49,10 @@ import { SearchBarComponent } from './view/search-bar/search-bar.component';
     SignInComponent,
     LoginAdminComponent,
     LoginComponent,
-    SignInComponent,
     SearchBarComponent,
     NotFoundComponent,
-    UserCardComponent
+    UserCardComponent,
+    
 
   ],
   imports: [
@@ -77,7 +77,8 @@ import { SearchBarComponent } from './view/search-bar/search-bar.component';
     MatListModule,
     MatRadioModule,
     MatSidenavModule,
-    MatCardModule
+    MatCardModule,
+    MatVideoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
