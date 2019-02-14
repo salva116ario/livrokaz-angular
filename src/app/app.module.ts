@@ -27,8 +27,8 @@ import {BookListComponent} from './view/book-list/book-list.component';
   MatSelectModule,
   MatRadioModule,
   MatGridListModule,
-  MatFormFieldModule, MatSidenavModule, MatCardModule
-} from '@angular/material';
+  MatFormFieldModule, MatSidenavModule, MatCardModule, MatDatepickerModule
+  } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {UserCardComponent} from './view/user-card/user-card.component';

@@ -43,4 +43,12 @@ export class BookService {
       return of(new Book(null, null, '', '', '', '', '', 0, new Date(), 0, '', '', '', null));
     }
   }
+
+  public updateBook(book: Book) {
+    this.httpClient.put<Book>('http://localhost:8080/book/modify', book).subscribe(updatedBook => {
+      this.availableBooks$.next(this.availableBooks);
+    }
+    );
+  }
+
 }

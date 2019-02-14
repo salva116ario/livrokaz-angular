@@ -8,8 +8,13 @@ img {
 
 form {
   margin: 0 auto;
-  max-width: 800px;
-  max-height: 1200px;
+
+}
+mat-form-field {
+  width: 85%;
+  margin: 10px;
 }
 
-
+.form-book-detail > *{
+  width: 100%;
+}
