@@ -1,15 +1,15 @@
 .example-container {
   width: auto;
-  height: 58vmin;
+  height: 76vmin;
   margin: 10px;
   border: 1px solid #555;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3),
+  box-shadow: 2px 2px 8px rgba(115, 49, 177, 0.3),
   0 0 40px rgba(0, 0, 0, 0.1) inset;
   border-radius: 6px;
 }
 .menu {
   width : 20%;
-  height: 75vmin;
+  height: 100vmin;
   background-color: #555;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3),
   0 0 40px rgba(0, 0, 0, 0.1) ;

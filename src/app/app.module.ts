@@ -49,10 +49,10 @@ import { SearchBarComponent } from './view/search-bar/search-bar.component';
     SignInComponent,
     LoginAdminComponent,
     LoginComponent,
-    SignInComponent,
     SearchBarComponent,
     NotFoundComponent,
-    UserCardComponent
+    UserCardComponent,
+    
 
   ],
   imports: [

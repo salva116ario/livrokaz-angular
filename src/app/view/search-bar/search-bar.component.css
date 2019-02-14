@@ -11,16 +11,19 @@
 
 .searchCard {
   width: 65%;
-  margin-left: 25%;
-  border: 2px solid black;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3),
-    0 0 40px rgba(0, 0, 0, 0.1);
+  margin-left: 18%;
+  border: 1px solid rgb(115, 49, 177,0.5);
+  box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1),
+    0 0 40px rgba(0, 0, 0, 0.1),
+    1px 1px 1px rgb(0, 0, 0, 0.1);
   z-index: 10;
+  margin-bottom:3%;
 }
 
 .searchButton {
   margin-left: 05%;
   display: inline-table;
+  box-shadow:1px 1px 1px 1px rgb(115, 49, 177, 0.5);
 }
 
 
