@@ -77,7 +77,8 @@ import { SearchBarComponent } from './view/search-bar/search-bar.component';
     MatListModule,
     MatRadioModule,
     MatSidenavModule,
-    MatCardModule
+    MatCardModule,
+    MatVideoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
