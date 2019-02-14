@@ -1,15 +1,19 @@
-<h1>Edition/création de livre</h1>
+<h1 *ngIf="newBook">Création de livre </h1>
+<h1 *ngIf="!newBook">Edition de livre</h1>
 
 <form *ngIf="bookEdited" (ngSubmit)="onSubmit(f)" #f="ngForm">
-  <mat-form-field>
+
+  <mat-form-field *ngIf="!newBook">
     <label for="boId">
       <input matInput readonly type="text" id="boId" [(ngModel)]="bookEdited.boId" name="boId">
     </label>
     <mat-hint>ID de l'ouvrage</mat-hint>
   </mat-form-field>
-  <br /><img src="{{bookEdited.boCover}}" alt="page de couverture" >
+
+  <img src="{{bookEdited.boCover}}" alt="photo de couverture">
   <mat-form-field>
   <label for="boCover"></label>
+
   <input matInput type="text" id="boCover" placeholder="entrez l'URL de la page de couverture" [(ngModel)]="bookEdited.boCover" name="boCover" required>
     </mat-form-field>
 
@@ -24,12 +28,22 @@
       </mat-form-field>
 
   <mat-form-field>
-    <label for="stLabelFr"></label>
-    <select matNativeControl name="stLabelFr" id="stLabelFr" placeholder="Choisissez la catégorie" [(ngModel)]="bookEdited.style.stLabelFr" required>
+    <label for="boEditor"></label>
+    <input matInput type="text" id="boEditor" placeholder="Entrez le nom de l'éditeur" [(ngModel)]="bookEdited.boEditor" name="boEditor" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>CATEGORIE : </mat-label>
+    <mat-select [(value)]="bookEdited.style.stId">
+      <mat-option *ngFor="let style of availableStyles.getValue()" [value]="style.stId">{{style.stLabelFr}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!--<mat-form-field>
+    <select matNativeControl name="style" placeholder="Choisissez la catégorie" [(ngModel)]="style.stLabelFr" required>
       <option *ngFor="let style of availableStyles.getValue()">{{style.stLabelFr}}</option>
     </select>
-      </mat-form-field>
-
+      </mat-form-field>-->
 
   <mat-form-field>
     <label for="boLanguage"></label>

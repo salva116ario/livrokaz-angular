@@ -16,9 +16,7 @@ export class BookService {
   }
 
   private getBooks(): Observable<Book[]> {
-    return this.httpClient.get<Book[]>(
-      "http://192.168.1.212:8080/book/getall"
-    );
+    return this.httpClient.get<Book[]>('http://localhost:8080/book/getall');
   }
 
   public publishBooks() {
@@ -47,9 +45,46 @@ export class BookService {
   }
 
   public updateBook(book: Book) {
-    this.httpClient
-      .put<Book>("http://192.168.1.212:8080/book/modify", book)
-      .subscribe(updatedBook => {
+    this.httpClient.put<Book>('http://localhost:8080/book/modify', book).subscribe(updatedBook => {
+        this.availableBooks$.next(this.availableBooks);
+      }
+    );
+  }
+
+  public createBook(book: Book) {
+    this.httpClient.post<Book>('http://localhost:8080/book/add', book).subscribe(createdBook => {
+        this.availableBooks.push(book);
+        this.availableBooks$.next(this.availableBooks);
+      }
+    );
+  }
+
+  public deleteBook(bookId: number) {
+    this.httpClient.delete('http://localhost:8080/book/delete/' + bookId).subscribe(deletedBook => {
+      this.publishBooks();
+    });
+  }
+
+  public findByAuthor(author: string): Observable<Book[]> {
+    return this.httpClient
+      .get<Book[]>("http://localhost:8080/book/getbyauthor/{author}")
+  }
+
+  public findByEditor(title: string): Observable<Book[]> {
+    return this.httpClient
+      .get<Book[]>("http://localhost:8080/book//getbyeditor/{editor}")
+  }
+
+  public findByTitle(author: string): Observable<Book[]> {
+    return this.httpClient
+      .get<Book[]>("http://localhost:8080/book//getbytitle/{title}");
+  }
+
+  public publishBookBy(search: string, selectType: string) {
+    console.log(search, selectType)
+    this.filterBy(search, selectType).subscribe(
+      bookList => {
+        this.availableBooks = bookList;
         this.availableBooks$.next(this.availableBooks);
       });
   }
@@ -58,17 +93,17 @@ export class BookService {
     switch (selectType) {
 
       case 'author':
-        return this.httpClient.get<Book[]>(`http://192.168.1.212:8080/book/getbyauthor/${search}`);
+        return this.httpClient.get<Book[]>(`http://localhost:8080/book/getbyauthor/${search}`);
         break;
       case 'editor':
-        return this.httpClient.get<Book[]>(`http://192.168.1.212:8080/book/getbyeditor/${search}`);
+        return this.httpClient.get<Book[]>(`http://localhost:8080/book/getbyeditor/${search}`);
         break;
       case 'titre':
-      console.log('error')
-        return this.httpClient.get<Book[]>(`http://192.168.1.212:8080/book/getbytitle/${search}`);
+        console.log('error')
+        return this.httpClient.get<Book[]>(`http://localhost:8080/book/getbytitle/${search}`);
         break;
-  }
     }
+  }
 
   public publishBookBy(search: string, selectType: string) {
     console.log(search, selectType)
